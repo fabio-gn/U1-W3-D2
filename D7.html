@@ -263,20 +263,24 @@
     */
 
     const changeColorWithRandom = function () {
+    let generateColor = function(){
       const hexCyphers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C','D','E','F']
-    let colorHex = "#";
+      let colorHex = "#";
         for(let i = 0; i < 6; i++){
+            
             let random = Math.floor(Math.random() * hexCyphers.length);
             colorHex += hexCyphers[random];
-            
-
-        }
-    console.log(colorHex);
-    let heading2 = document.querySelectorAll('h2');
+            }
+    return colorHex;
+    } 
+    
+    let heading2 = document.querySelector('h2');
     let changeColor = () =>{
-      heading2.style.color = colorHex;
+      heading2.style.color = generateColor();
+      
     }
     heading2.onclick = changeColor;
+    return 'clicked';
 }
 changeColorWithRandom()
 
@@ -288,9 +292,17 @@ changeColorWithRandom()
     */
 
     const deleteVowels = function () {
-
+      // let c = 'lorem ipsum dolor sic amet er ilfugitur olll'
+      // c = c.replace(/[aeiou]/igm, '')
+      // console.log(c);
+      let everything = document.querySelectorAll('h1, h2, h3, h4, li, p, span, td, a');
+      everything.forEach(el => {
+        el.textContent = el.textContent.replace(/[aeiou]/igm, '')
+        
+      })
 
     }
+    deleteVowels();
 
   </script>
 </body>
